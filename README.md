@@ -8,7 +8,7 @@
 - Everton Alves
 - Gilmar Miranda
 
-## Bem vinda Prof Daniel Sangelo ao nosso BD Lojas de Instrumentos Musicais ! 
+## Bem vindo Prof Daniel Sangelo ao nosso BD Lojas de Instrumentos Musicais ! 
 
 ### Como navegar:
  - 📌 O diagrama está disponível na pasta "Modelo";
