@@ -100,7 +100,7 @@ INSERT INTO RegistroCompras (id, valorCompra, dataPedido, formaPagamento, client
  (default, 6520.00, '2022-03-23 09:05:41', 'cartão', 1),
  (default, 6799.00, '2021-08-05 15:30:02', 'boleto', 2),
  (default, 14900.00, '2022-01-08 12:45:56', 'pix', 3),
- (default, 980.00, '2022-01-08 12:45:56', 'pix', 3),
+ (default, 980.00, '2022-06-26 12:45:56', 'pix', 3),
  (default, 25.30, '2022-01-08 12:45:56', 'pix', 3),
  (default, 25.30, '2022-01-08 12:45:56', 'pix', 3),
  (default, 1599.00, '2022-05-31 10:00:05', 'cartão', 4),
@@ -144,15 +144,20 @@ INSERT INTO Produtos (id, nomeProduto, valorUnitario, qtdEstoque) VALUES
 	FOREIGN KEY (registroComprasID) REFERENCES registrocompras(id)
 );
 
-
-SELECT 
-	COUNT(clienteID) AS qtdCartoes,
-    nome
- FROM 
-	cartoes 
- GROUP BY 
-	nome,
-    clienteID;
+--
+-- Dumping data for table `Produtos_RegistrosCompras`
+--
+INSERT INTO Produtos_RegistrosCompras (produtosID, registroComprasID) VALUES 
+ (2344, 1),
+ (2345, 2),
+ (2349, 3),
+ (2348, 4),
+ (2350, 5),
+ (2350, 6),
+ (2346, 7),
+ (2348, 8),
+ (2347, 9),
+ (2346, 10);
     
  # --------------------------------------C R U D------------------------------------------ #
 
@@ -192,7 +197,7 @@ CREATE PROCEDURE seleciona_enderecos_pelo_numero(IN numeroInput INT)
 		FROM 
 			cliente as cl
 		INNER JOIN
-		endereco as e
+		endereco as e
 		ON
 			cl.id = e.clienteID
 		HAVING numero LIKE numeroInput;
@@ -201,6 +206,36 @@ DELIMITER ;
 
 CALL seleciona_enderecos_pelo_numero(300);
 
-
 # Ȃ. Crie uma view que contemple os principais dados do banco, de forma que
 # qualquer usuário possa manipular os dados apenas pela view criada
+CREATE VIEW viewProdutosPorMenorPreco AS
+SELECT p.nomeProduto,
+       p.valorUnitario
+FROM Produtos as p
+ORDER BY
+p.valorUnitario asc;
+
+SELECT * FROM viewProdutosPorMenorPreco;
+
+CREATE VIEW viewDadosClientesPedidosMaisRecentes AS
+SELECT 
+	cl.nome,
+    cl.sobrenome,
+    cl.email,
+    cl.cpf,
+    rc.valorCompra,
+    rc.dataPedido,
+    rc.formaPagamento,
+    rc.clienteID
+FROM 
+	cliente as cl
+INNER JOIN
+	registrocompras as rc
+ON
+	rc.clienteID = cl.id
+ORDER BY
+rc.dataPedido desc;
+
+SELECT * FROM viewDadosClientesPedidosMaisRecentes;
+
+    
