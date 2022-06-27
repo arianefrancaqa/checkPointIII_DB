@@ -1,2 +1,16 @@
-# checkPointIII_DB
-Terceiro checkpoint da disciplina de banco de dados
+# Front-end CheckPoint 02
+
+## Developers: :computer:
+- Ariane França
+- André Goldoni
+- Gabriel Gonzaga
+- Henrique Schneider
+- Everton Alves
+- Gilmar Miranda
+
+## Bem vinda Prof Daniel Sangelo ao nosso BD Lojas de Instrumentos Musicais ! 
+
+### Como navegar:
+ - 📌 O diagrama está disponível na pasta "Modelo";
+ - 📌 O arquivo SQL está disponível na pasta raíz com o nome de "baseDeDados_LojaDeInstrumentos.sql";
+
