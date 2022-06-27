@@ -159,33 +159,33 @@ INSERT INTO Produtos_RegistrosCompras (produtosID, registroComprasID) VALUES
  (2347, 9),
  (2346, 10);
     
- # --------------------------------------C R U D------------------------------------------ #
+-- --------------------------------------C R U D------------------------------------------ #
 
-#   Atualização de dados em uma das tabelas.
+-- #   Atualização de dados em uma das tabelas.
  -- Updates
 update endereco
 set numero = 402
 where id = 2;
 
 
-# ● Exclusão de dados em uma das tabelas.
+-- # ● Exclusão de dados em uma das tabelas.
 DELETE FROM endereco
 WHERE id = 5;
 select * from endereco;
 
-# ● Seleção de dados de uma das tabelas.
+-- # ● Seleção de dados de uma das tabelas.
 -- Select address updated
 select * from endereco where id = 2;
 
-# Utilize Alter Table para acrescentar uma coluna a uma tabela.
+-- # Utilize Alter Table para acrescentar uma coluna a uma tabela.
 -- Altering table -  add column `CEP`
 alter table endereco add column cep VARCHAR(10) null;
 select * from endereco;
 
 
-# ȁ. Crie uma procedure que, dado um número como parâmetro, retorne dados
-# de duas ou mais tabelas.
-DELIMITER $$
+-- # ȁ. Crie uma procedure que, dado um número como parâmetro, retorne dados
+-- # de duas ou mais tabelas.
+-- DELIMITER $$
 
 CREATE PROCEDURE seleciona_enderecos_pelo_numero(IN numeroInput INT)
 	BEGIN
@@ -206,8 +206,8 @@ DELIMITER ;
 
 CALL seleciona_enderecos_pelo_numero(300);
 
-# Ȃ. Crie uma view que contemple os principais dados do banco, de forma que
-# qualquer usuário possa manipular os dados apenas pela view criada
+-- # Ȃ. Crie uma view que contemple os principais dados do banco, de forma que
+-- # qualquer usuário possa manipular os dados apenas pela view criada
 CREATE VIEW viewProdutosPorMenorPreco AS
 SELECT p.nomeProduto,
        p.valorUnitario
